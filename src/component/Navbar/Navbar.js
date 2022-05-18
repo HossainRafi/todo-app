@@ -25,19 +25,21 @@ const Header = () => {
 
         {user?.uid ? (
           <button
-            className="text-slate-600 hover:text-blue-600 text-lg font-bold"
+            className="text-slate-600 hover:text-blue-600 text-2xl font-mono font-medium"
             onClick={() => signOut(auth)}
           >
-            LogOut
+            Logout
           </button>
         ) : (
           <NavLink
             to="/login"
             className={({ isActive }) =>
-              isActive ? "text-blue-600" : "text-slate-600 hover:text-blue-600"
+              isActive
+                ? "text-blue-600"
+                : "text-slate-600 hover:text-blue-600text-2xl font-mono font-medium"
             }
           >
-            LogIn
+            Login
           </NavLink>
         )}
       </div>
