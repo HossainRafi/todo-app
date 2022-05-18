@@ -1,0 +1,84 @@
+.login-container {
+    position: relative;
+    width: 350px;
+    margin: 0 auto;
+    height: auto;
+    border-radius: 15px;
+    padding: 2px 45px;
+    box-sizing: border-box;
+    background: #dddddd;
+}
+
+
+.login-title {
+    text-align: center;
+    margin-top: 0px;
+    font-weight: 700;
+    border-bottom: 5px solid #0c2162;
+    font-size: 2.5rem;
+    color: #4963b6;
+    letter-spacing: 1px;
+}
+
+.login-form {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.login-container label,
+.login-container input,
+.login-container button {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.login-container label {
+    margin-bottom: 4px;
+    color: gray;
+    margin: 15px 0 5px 5px;
+    
+}
+
+.login-container input::placeholder {
+    color: grey;
+}
+
+.login-container input {
+    background: #f5f7f9;
+    margin: 15px 0 0 0;
+    padding: 5px;
+    padding-left: 20px;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 50px;
+}
+
+.login-container button {
+    color: #0c2162;
+    margin-top: 15px;
+    background: #74acf6;
+    font-size: 20px;
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.5s;
+}
+
+.login-container button:hover {
+    background: #4b85b0;
+}
+
+.error-message{
+    font-size: 18px;
+    color: #d50000;
+    margin: 10px;
+}
+.error-message::before{
+    content: "❌ ";
+    font-size: 15px;
+}
