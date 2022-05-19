@@ -7,7 +7,7 @@ const AddTask = () => {
     const name = e.target.name.value;
     const description = e.target.description.value;
     const list = { name, description };
-    fetch("/list", {
+    fetch("https://sheltered-oasis-12618.herokuapp.com/list", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(list),
