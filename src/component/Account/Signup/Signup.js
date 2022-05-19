@@ -45,7 +45,7 @@ const Signup = () => {
     }
   };
   const handlePasswordChange = (e) => {
-    const passwordRegex = /.{6,}/;
+    const passwordRegex = /.{5,}/;
     const validPassword = passwordRegex.test(e.target.value);
 
     if (validPassword) {
@@ -76,13 +76,13 @@ const Signup = () => {
     if (hookError) {
       switch (hookError?.code) {
         case "auth/invalid-email":
-          toast.error("OOPS..!! Something Went Wrong. Try Again Later");
+          toast("OOPS..!! Something Went Wrong. Try Again Later");
           break;
         case "auth/invalid-password":
-          toast.error("OOPS..!! Something Went Wrong. Try Again Later");
+          toast("OOPS..!! Something Went Wrong. Try Again Later");
           break;
         default:
-          toast.error("OOPS..!! Something Went Wrong. Try Again Later");
+          toast("OOPS..!! Something Went Wrong. Try Again Later");
       }
     }
   }, [hookError]);
@@ -92,10 +92,10 @@ const Signup = () => {
   const from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
-    if (user) {
+    if (user || googleUser) {
       navigate(from);
     }
-  }, [user]);
+  }, [user, googleUser]);
 
   const handleGoogleLogin = () => {
     signInWithGoogle();

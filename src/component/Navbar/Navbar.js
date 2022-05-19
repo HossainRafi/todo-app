@@ -13,19 +13,27 @@ const Header = () => {
           TODO APP
         </p>
       </div>
-      <div className="flex text-2xl font-mono font-medium gap-8">
+      <div className="flex text-xl font-sans font-medium gap-8">
         <NavLink
           to="/"
           className={({ isActive }) =>
             isActive ? "text-blue-600" : "text-slate-600 hover:text-blue-600"
           }
         >
-          Task
+          Add Task
+        </NavLink>
+        <NavLink
+          to="/alltask"
+          className={({ isActive }) =>
+            isActive ? "text-blue-600" : "text-slate-600 hover:text-blue-600"
+          }
+        >
+          All Task
         </NavLink>
 
         {user?.uid ? (
           <button
-            className="text-slate-600 hover:text-blue-600 text-2xl font-mono font-medium"
+            className="text-slate-600 hover:text-blue-600 text-xl font-serif font-medium"
             onClick={() => signOut(auth)}
           >
             Logout
@@ -36,7 +44,7 @@ const Header = () => {
             className={({ isActive }) =>
               isActive
                 ? "text-blue-600"
-                : "text-slate-600 hover:text-blue-600text-2xl font-mono font-medium"
+                : "text-slate-600 hover:text-blue-600text-xl font-serif font-medium"
             }
           >
             Login

@@ -12,12 +12,9 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "./Login.css";
 import { ScaleLoader } from "react-spinners";
-import axios from "axios";
 import auth from './../../../firebase.init';
 
 const Login = () => {
-  const [token, setToken] = useState("");
-
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const navigate = useNavigate();
   const location = useLocation();
@@ -26,26 +23,6 @@ const Login = () => {
 
   const [signInWithEmail, user, loading, hookError] =
     useSignInWithEmailAndPassword(auth, { sendEmailVerification: true });
-
-  const [use] = useAuthState(auth);
-  const email = use?.email;
-  console.log(email);
-  useEffect(() => {
-    (async () => {
-      if (email) {
-        const { data } = await axios.post(
-          "https://pacific-scrubland-98119.herokuapp.com/login",
-          {
-            email,
-          }
-        );
-        console.log(data);
-        setToken(data.token);
-        localStorage.setItem("token", data.token);
-      }
-    })();
-  }, [email]);
-  console.log(token);
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
   const [sendPasswordResetEmail, sending, error] =
@@ -64,7 +41,7 @@ const Login = () => {
   };
 
   const handlePasswordChange = (e) => {
-    const passwordRegex = /.{6,}/;
+    const passwordRegex = /.{5,}/;
     const validPassword = passwordRegex.test(e.target.value);
     if (validPassword) {
       setUserInfo({ ...userInfo, password: e.target.value });
@@ -79,7 +56,7 @@ const Login = () => {
     e.preventDefault();
     signInWithEmail(userInfo.email, userInfo.password);
   };
-  if (token) {
+  if (user || googleUser) {
     navigate(from, { replace: true });
   }
   useEffect(() => {
@@ -87,14 +64,14 @@ const Login = () => {
     if (error) {
       switch (error?.code) {
         case "auth/invalid-email":
-          toast("Your Email Is Invalid");
+          toast("OOPS..!! Something Went Wrong. Try Again Later");
           break;
 
         case "auth/invalid-password":
-          toast("Your Password Is Invalid");
+          toast("OOPS..!! Something Went Wrong. Try Again Later");
           break;
         default:
-          toast.error("OOPS..!! Something Went Wrong. Try Again Later");
+          toast("OOPS..!! Something Went Wrong. Try Again Later");
       }
     }
   }, [hookError, googleError]);
@@ -103,7 +80,7 @@ const Login = () => {
   };
   const handleResetPass = () => {
     sendPasswordResetEmail(userInfo.email);
-    toast.success("Mail Send");
+    toast("Mail Send");
   };
 
   return (

@@ -24,6 +24,10 @@
     text-align: left;
     margin-top: 20px;
 }
+.login-container textarea {
+    margin-top: 10px;
+    border-radius: 10px;
+}
 
 .login-container label,
 .login-container input,
@@ -46,6 +50,9 @@
 .login-container input::placeholder {
     color: grey;
 }
+.login-container textarea::placeholder {
+    color: grey;
+}
 
 .login-container input {
     background: #f5f7f9;
@@ -57,7 +64,7 @@
     border-radius: 50px;
 }
 
-.login-container button {
+.login-container button  {
     color: #0c2162;
     margin-top: 15px;
     background: #74acf6;
